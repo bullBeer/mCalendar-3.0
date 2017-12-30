@@ -16,6 +16,6 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-*.css linguist-language=css
+
 *.js linguist-language=javascript
 
