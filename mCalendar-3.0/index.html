@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta content="no" name="wap-font-scale" />
+		<title>mCalendar</title>
+		<link rel="stylesheet" href="css/mCalendar.css">
+		<script src="js/mCalendar-3.0.min.js"></script>
+		<style type="text/css">
+			body{line-height:1.3;text-align:center;}
+			h1{padding:25px 0;}
+			.item{margin:10px;}
+			input{-webkit-appearance:none;border-radius:0;box-shadow:0;}
+			input{display:block;width:100%;border:1px solid #ccc;height:32px;padding:0 10px;box-sizing:border-box;}
+			input:readonly{background:#fff;color:#555;}
+		</style>
+	</head>
+	<body>
+
+		<h1>mCalendar</h1>
+		<!--demo start-->
+		<div class="item" id="item1">
+			<input type="text" placeholder="请选择日期" id="input1" readonly="readonly">
+		</div>
+		<div class="item" id="item2">
+			<input type="text" placeholder="请选择日期" id="input2" readonly="readonly">
+		</div>
+		<script type="text/javascript">
+			var item1=document.getElementById('item1');
+			var input1=document.getElementById('input1');
+			
+			var input2=document.getElementById('input2');
+			var calendar1=new mCalendar({
+				//可选参数
+				'initDate':'2014-10-12,2014-10-30', //初始日期 多个请逗号隔开 注* 日期格式：2015-01-01
+				'inited': function(){ //初始化完成
+					var this_ = this;
+					input1.setAttribute('value',this_.initDate);
+				},
+				'multiple':true,//多选
+				//必填参数
+				'toBind':item1,//触发控件元素
+				'callback':function(){ //确定选择执行回调
+					input1.setAttribute('value',this.outputDate);
+					//输出日期 this.outputDate
+				}
+			});
+			var calendar2=new mCalendar({
+				'toBind':input2,
+				'callback':function(){
+					input2.setAttribute('value',this.outputDate);
+				}
+			});
+		</script>
+		<!--demo end-->
+
+
+
+	</body>
+</html>
